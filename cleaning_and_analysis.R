@@ -138,7 +138,7 @@ all_trips_v4 %>%
        fill = "User Type")
 ```
 
-### Plot Number of Rides per Day od the Week
+### Plot Number of Rides per Day of the Week
 ```{r, echo=FALSE}
 all_trips_v4 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
