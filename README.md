@@ -1,2 +1,4 @@
-# Bikeshare-Case-Study
-My analysis for one of the capstone projects for Coursera
+# Bikeshare Case Study
+This repository contains my analysis for one of the Google Data Analtics Course Capstone Projects on Coursera.
+The goal of this project is to use  12 months of real data from Divvy to help a fictional company (Cyclistic)
+decide on the best method(s) of converting casual riders using their service into annual members.
