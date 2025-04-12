@@ -126,6 +126,7 @@ remove(all_trips_v3)
 ```
 
 ### Plot total number of rides per  member type
+
 ```{r, echo=FALSE}
 all_trips_v4 %>%
   group_by(member_casual) %>% 
@@ -141,6 +142,7 @@ all_trips_v4 %>%
 
 
 ### Plot Average Ride Duration per Day of the Week
+
 ```{r, echo=FALSE}
 all_trips_v4 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
@@ -156,6 +158,7 @@ all_trips_v4 %>%
 ```
 
 ### Plot Number of Rides per Day of the Week
+
 ```{r, echo=FALSE}
 all_trips_v4 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
