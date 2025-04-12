@@ -4,18 +4,28 @@ author: "Anthony"
 date: "2025-04-06"
 output: html_document
 ---
+### The following script contains the code used for cleaning and analysis of data from
+### the Google Data Analytics Course on Coursera. The main goal of this  project is to 
+### utilize 12 months of data  (January-December, 2024) to provide business insights to 
+### Cysclistic, a fictional bikeshare company, on how they might convert  casual users of
+### the service to annual members. 
+### Though the company is fictional, the data is real data provided byy Divvy, and has 
+### had all personal information removed.
+
 
 ### Setting Up Environment
 
 ```{r setup, echo=FALSE, message=FALSE}
+install.packages("tidyverse")
 library(tidyverse)
-library("conflicted")
+install.packages("conflicted")
+library(conflicted)
 conflict_prefer("filter", "dplyr")
 conflict_prefer("lag", "dplyr")
 ```
 
 
-### Importing raw data from .csv files##
+### Importing raw data from .csv files
 
 ```{r, message=FALSE}
 Jan_2024 <- read_csv("C:/Users/18046/OneDrive/Desktop/Coursera - Anthony/bikeshare_case_study/202401-divvy-tripdata.csv")
@@ -57,12 +67,15 @@ all_trips <- bind_rows(Jan_2024, Feb_2024, Mar_2024, Apr_2024, May_2024, Jun_202
                        Jul_2024, Aug_2024,
                        Sep_2024, Oct_2024, Nov_2024,  Dec_2024)
 ```
+
 ### Remove placeholder datasets
+
 ```{r}
 remove(Jan_2024, Feb_2024, Mar_2024, Apr_2024, May_2024, Jun_2024,
        Jul_2024, Aug_2024, Sep_2024, Oct_2024, Nov_2024, Dec_2024)
 ```
 
+### Splitting up date and time to make data easier to us and understand
 
 ```{r, message=FALSE}
 all_trips$date <- as.Date(all_trips$started_at)
@@ -76,6 +89,7 @@ all_trips$trip_duration <- as.numeric(as.character(all_trips$trip_duration))
 
 
 ### Creating new table excluding all rows where trip duration is less than zero seconds or greater than one day
+
 ```{r, message=FALSE}
 all_trips_v2 <- all_trips[!(all_trips$trip_duration < 0) & !(all_trips$trip_duration > 86400),]
 ```
@@ -84,6 +98,7 @@ all_trips_v2 <- all_trips[!(all_trips$trip_duration < 0) & !(all_trips$trip_dura
 remove(all_trips)
 ```
 
+### Removing data that won't be used
 
 ```{r, message=FALSE}
 all_trips_v3 <- all_trips_v2 %>% 
@@ -95,11 +110,13 @@ remove(all_trips_v2)
 ```
 
 ### Converting average duration to minutes
+
 ```{r, message=FALSE}
 all_trips_v3 %>% 
   mutate(trip_duration_m =  trip_duration/60)
 ```
 ### Removing 'null' values
+
 ```{r, message=FALSE}
  all_trips_v4 <- na.omit(all_trips_v3)
 ```
