@@ -188,3 +188,16 @@ all_trips_v4 %>%
        y = "# of Rides",
        fill = "User Type")
 ```
+### Plot Number of Rides per Rideable Type
+
+```{r, echo=FALSE}
+ all_trips_v4 %>% 
+   group_by(member_casual,rideable_type) %>% 
+   summarise(number_of_rides = n())%>% 
+   ggplot(aes(x=rideable_type, y=number_of_rides, fill=member_casual))+
+   geom_col(position = "dodge")+
+  labs(title = "Rides per Rideable Type",
+       x = "Rideable Type",
+       y = "# of Rides",
+       fill = "User Type")
+```
