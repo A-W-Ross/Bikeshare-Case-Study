@@ -147,13 +147,13 @@ all_trips_v4 %>%
 all_trips_v4 %>% 
   mutate(weekday = wday(started_at, label = TRUE)) %>% 
   group_by(member_casual, weekday) %>% 
-  summarise(number_of_rides = n(), average_duration = mean(trip_duration)) %>% 
+  summarise(average_duration = mean(trip_duration_m)) %>% 
   arrange(member_casual, weekday) %>% 
   ggplot(aes(x=weekday, y=average_duration, fill=member_casual))+
   geom_col(position = "dodge")+
   labs(title = "Average Ride Duration per  Day of the Week",
        x = "Day of Week",
-       y = "Average Duration",
+       y = "Average Duration (m)",
        fill = "User Type")
 ```
 
