@@ -75,7 +75,7 @@ remove(Jan_2024, Feb_2024, Mar_2024, Apr_2024, May_2024, Jun_2024,
        Jul_2024, Aug_2024, Sep_2024, Oct_2024, Nov_2024, Dec_2024)
 ```
 
-### Splitting up date and time to make data easier to us and understand
+### Splitting up date and time to make data easier to use and understand
 
 ```{r, message=FALSE}
 all_trips$date <- as.Date(all_trips$started_at)
